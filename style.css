@@ -1,0 +1,386 @@
+/* style.css */
+
+/* --- Basic Reset and Fonts --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Manjari is requested for Malayalam, but we must rely on system availability */
+.malayalam-content {
+    font-family: 'Manjari', sans-serif; /* Add Google Font link for better compatibility */
+}
+
+/* --- Navigation Bar --- */
+header {
+    background-color: #004a77; /* E-Magazine primary color */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .header-content { /* New wrapper for title and logo */
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    height: 50px; /* Adjust logo size as needed */
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    display: inline-block; /* Ensure it aligns with logo */
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #0066a3;
+}
+
+/* --- Language Toggle Button --- */
+#lang-toggle {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+#lang-toggle:hover {
+    background-color: #cc7a00;
+}
+
+/* --- Main Content Layout --- */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    color: #004a77;
+    border-bottom: 2px solid #ff9900;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* --- Language Visibility Logic --- */
+.lang-en, .lang-ml {
+    display: none;
+}
+
+/* Default to English if no language is set, or if set to 'en' */
+body:not([data-lang='ml']) .lang-en {
+    display: block;
+}
+
+/* Show Malayalam content when 'data-lang' is 'ml' */
+body[data-lang='ml'] .lang-ml {
+    display: block;
+}
+
+/* To ensure text elements flow naturally */
+body[data-lang='ml'] .lang-ml.inline {
+    display: inline;
+}
+body:not([data-lang='ml']) .lang-en.inline {
+    display: inline;
+}
+
+
+/* --- Magazine Volumes Section (Home Page) --- */
+.magazine-volumes {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.volume-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.volume-card img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Magazine cover-like aspect */
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    background-color: #eee; /* Placeholder background */
+}
+
+.volume-card button {
+    background-color: #009933;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.volume-card button:hover {
+    background-color: #007a2a;
+}
+
+.coming-soon-text {
+    color: #666;
+    font-style: italic;
+    font-size: 1.1em;
+    padding: 10px 0;
+}
+
+/* --- Team Section (About Page) --- */
+.main-team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+.team-container-sub {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+.team-member {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.volunteer-member {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.volunteer-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.photo-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    color: #666;
+    overflow: hidden; /* For when you add a real image */
+}
+
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none; /* Hide placeholder text if image is present */
+}
+
+
+/* Make CEO, Co-founder, Editor names attractive */
+.name-attractive {
+    font-size: 1.4em;
+    font-weight: 900; /* Extra bold */
+    color: #d9534f; /* A prominent red/orange color */
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin: 5px 0 2px;
+}
+
+.volunteer-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0 2px;
+}
+
+.role {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+/* --- Contact Section (Contact Us Page) --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.contact-info a {
+    color: #004a77;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1.5em; /* Increase size for icons/links */
+    color: #004a77;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ff9900;
+}
+
+/* --- Contact Form --- */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    background-color: #004a77;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #0066a3;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+    header .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .header-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    header h1 {
+        margin-bottom: 10px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
+    #lang-toggle {
+        margin-top: 10px;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
